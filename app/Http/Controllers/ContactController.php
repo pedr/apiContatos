@@ -57,7 +57,7 @@ class ContactController extends Controller
      */
     public function update(StoreContact $request, Contact $contact)
     {
-
+ 
         $validated = $request->validated();
 
         $contact->update($validated);
