@@ -13,9 +13,13 @@ class ContactController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function all()
+    public function all(Request $request, Contact $contact)
     {
-        $contacts = Contact::all();
+        if ($request->has('busca')){
+            $contacts = $contact->where('contactName', 'LIKE', '%' . $request->busca . '%')->get();
+        } else {
+            $contacts = Contact::all();
+        }
 
         return response()->json($contacts);
     }
@@ -41,7 +45,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        return $contact;
+        return response()->json($contact);
     }
 
     /**
