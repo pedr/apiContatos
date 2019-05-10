@@ -41,7 +41,7 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        return $contact;
+        return response()->json($contact);
     }
 
     /**
@@ -53,7 +53,7 @@ class ContactController extends Controller
      */
     public function update(StoreContact $request, Contact $contact)
     {
-
+ 
         $validated = $request->validated();
 
         $contact->update($validated);
